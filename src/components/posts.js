@@ -1,14 +1,19 @@
-import { usePostsQuery } from "../services/postApi";
+import { usePostsQuery, usePostQuery } from "../services/postApi";
 
 const Posts = () => {
   const { data: posts } = usePostsQuery();
-  console.log(posts);
+  const { data: singlePost } = usePostQuery(2);
 
   return (
     <ul>
       {posts?.map((post) => (
         <li key={post.id}>
-          {post.id} - {post.title}
+          {post.title}
+          <br />
+          <br />
+          {JSON.stringify(singlePost)}
+          <br />
+          <br />
         </li>
       ))}
     </ul>
