@@ -4,7 +4,7 @@ export const postApi = createApi({
   reducerPath: "postApi",
   tagTypes: ["Post"],
   baseQuery: fetchBaseQuery({
-    baseUrl: "https://jsonplaceholder.typicode.com/",
+    baseUrl: "http://localhost:8000/",
   }),
   endpoints: (builder) => ({
     posts: builder.query({
@@ -24,7 +24,7 @@ export const postApi = createApi({
       invalidatesTags: ["Post"],
     }),
     updatePost: builder.mutation({
-      query: (id, ...rest) => ({
+      query: ({ id, ...rest }) => ({
         url: `/posts/${id}`,
         method: "PUT",
         body: rest,
